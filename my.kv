@@ -1,0 +1,93 @@
+WindowManager:
+    StartScreen:
+        name: "start"
+        Label:
+            text: "KiwiApp"
+
+        Button:
+            size_hint: 0.5, 0.3
+            text: "Camera"
+            on_release: app.root.current = "camera"
+        Button:
+            size_hint: 0.5, 0.3
+            pos_hint: {"x": 0.5}
+            text: "Load"
+            on_release: app.root.current = "main"
+    Screen:
+        name: "main"
+
+        BoxLayout:
+            orientation: "horizontal"
+            MyWidget:
+                id: my_widget
+                FileChooserListView:
+                    id: filechooser
+
+                    on_selection:
+                        my_widget.selected(filechooser.selection)
+            Button:
+                size_hint: 1, 0.1
+                text: "Back"
+                on_release: app.root.current = "start"
+    Screen:
+        name: "camera"
+        CameraClick:
+            orientation: "horizontal"
+            Camera:
+                id: camera
+                resolution: [-1, -1]
+                play: False
+            ToggleButton:
+                text: 'On/Off'
+                on_press: camera.play = not camera.play
+                size_hint_y: None
+                height: '48dp'
+            Button:
+                text: 'Cancel'
+                on_press: app.root.current = "start"
+            Button:
+                text: 'Capture'
+                size_hint_y: None
+                height: '48dp'
+                on_press: root.capture()
+
+<StartScreen>:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
