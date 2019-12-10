@@ -2,7 +2,7 @@ WindowManager:
     StartScreen:
         name: "start"
         Label:
-            text: "KiwiApp"
+            text: "Easy Pinyin"
 
         Button:
             size_hint: 0.5, 0.3
@@ -16,19 +16,48 @@ WindowManager:
     Screen:
         name: "main"
 
-        BoxLayout:
-            orientation: "horizontal"
+
+        GridLayout:
+
+            cols: 1
+
+            #ScrollView:
+                #size_hint: (None, None)
+                #size: (900, 500)
+
+
+
             MyWidget:
                 id: my_widget
                 FileChooserListView:
                     id: filechooser
 
+
+
+
                     on_selection:
+
                         my_widget.selected(filechooser.selection)
-            Button:
-                size_hint: 1, 0.1
-                text: "Back"
-                on_release: app.root.current = "start"
+
+                    Label:
+                        id: word
+                        #font_name: font_path
+
+
+                    #Label:
+                        #id: word
+                        #font_name: font_path2
+
+
+
+
+
+
+
+        Button:
+            size_hint: 1, 0.1
+            text: "Back"
+            on_press: app.root.current = "start"
     Screen:
         name: "camera"
         CameraClick:
